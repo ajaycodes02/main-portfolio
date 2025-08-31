@@ -1,84 +1,164 @@
- // JavaScript with GSAP Animations
+  // Register GSAP plugins
         gsap.registerPlugin(ScrollTrigger);
-
-        // Hero Section Animations
-        gsap.from("#hero h1", { opacity: 0, y: 50, duration: 1, ease: "power3.out" });
-        gsap.from("#hero p", { opacity: 0, y: 50, duration: 1, delay: 0.5, ease: "power3.out" });
-        gsap.from("#hero button", { opacity: 0, scale: 0.8, duration: 1, delay: 1, ease: "elastic.out(1, 0.5)" });
-
-        // About Section Animations
-        gsap.from("#about p", {
-            scrollTrigger: "#about",
-            opacity: 0,
-            y: 50,
-            duration: 1
-        });
-        gsap.from("#about img", {
-            scrollTrigger: "#about",
-            opacity: 0,
-            scale: 0.5,
-            duration: 1,
-            delay: 0.5,
-            ease: "power3.out"
-        });
-        gsap.from("#about .skills li", {
-            scrollTrigger: "#about .skills",
-            opacity: 0,
-            y: 20,
-            stagger: 0.2,
-            duration: 0.8
-        });
-
-        // Projects Section Animations
-        gsap.from(".project-card", {
-            scrollTrigger: {
-                trigger: "#projects",
-                start: "top 80%",
-                toggleActions: "play none none reverse"
-            },
-            opacity: 0,
-            y: 50,
-            stagger: 0.3,
-            duration: 1
-        });
-
-        // Skills Section Animations
-        gsap.from(".skill", {
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%"
-            },
-            opacity: 0,
-            x: -50,
-            stagger: 0.2,
-            duration: 1
-        });
-        // Animate skill bars on scroll
-        document.querySelectorAll(".skill").forEach(skill => {
-            gsap.to(skill.querySelector(".skill-progress"), {
+        
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    }
+                });
+            });
+            
+            // Enhanced Hero Section Animations
+            const heroTl = gsap.timeline();
+            heroTl
+                .from('#hero h1', { 
+                    opacity: 0, 
+                    y: 100, 
+                    duration: 1, 
+                    ease: "power4.out" 
+                })
+                .from('#hero p', { 
+                    opacity: 0, 
+                    y: 50, 
+                    duration: 0.8, 
+                    ease: "power3.out" 
+                }, '-=0.5')
+                .from('.hero-btn', { 
+                    opacity: 0, 
+                    scale: 0.8, 
+                    duration: 1, 
+                    ease: "elastic.out(1, 0.5)" 
+                }, '-=0.3');
+            
+            // Enhanced About Section Animations
+            gsap.from('.about-text', {
                 scrollTrigger: {
-                    trigger: skill,
-                    start: "top 90%"
+                    trigger: '#about',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
                 },
-                width: skill.querySelector(".skill-progress").style.width,
-                duration: 1.5,
+                opacity: 0,
+                x: 100,
+                duration: 1,
                 ease: "power3.out"
             });
-        });
-
-        // Contact Section Animations
-        gsap.from("#contact form > *", {
-            scrollTrigger: "#contact",
-            opacity: 0,
-            y: 30,
-            stagger: 0.2,
-            duration: 0.8
-        });
-        gsap.from(".social-icons a", {
-            scrollTrigger: ".social-icons",
-            opacity: 0,
-            scale: 0.5,
-            stagger: 0.1,
-            duration: 0.5,
-            ease: "back.out(1.7)"
+            
+            // Enhanced Projects Section Animations
+            gsap.from('.project-card', {
+                scrollTrigger: {
+                    trigger: '#projects',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 100,
+                stagger: 0.2,
+                duration: 1,
+                ease: "power3.out"
+            });
+            
+            // Enhanced Skills Section Animations
+            gsap.from('.skill-card', {
+                scrollTrigger: {
+                    trigger: '#skills',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                y: 50,
+                stagger: 0.15,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+            
+            // Enhanced Contact Section Animations
+            gsap.from('.contact-form', {
+                scrollTrigger: {
+                    trigger: '#contact',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                x: -100,
+                duration: 1,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.social-links', {
+                scrollTrigger: {
+                    trigger: '#contact',
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                x: 100,
+                duration: 1,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.social-icons a', {
+                scrollTrigger: {
+                    trigger: '.social-icons',
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 0,
+                scale: 0,
+                stagger: 0.1,
+                duration: 0.5,
+                ease: "back.out(1.7)"
+            });
+            
+            // Hero button animation on hover
+            const heroBtn = document.querySelector('.hero-btn');
+            heroBtn.addEventListener('mouseenter', () => {
+                gsap.to(heroBtn, {
+                    y: -5,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+            
+            heroBtn.addEventListener('mouseleave', () => {
+                gsap.to(heroBtn, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
         });

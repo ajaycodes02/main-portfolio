@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ajay Portfolio</title>
+    <title>Ajay Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <body>
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">Ajay</div>
@@ -22,29 +20,26 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
-
 
     <!-- Hero Section -->
     <section id="hero">
-        <h1>ajay</h1>
+        <h1>Ajay</h1>
         <p>Passionate Web Developer creating interactive experiences.</p>
-        <button>Contact Me</button>
+        <button class="hero-btn">Contact Me</button>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>I'm a web developer with a focus on front-end technologies. I love building responsive and animated websites.</p>
-        <img src="https://via.placeholder.com/200" alt="Profile Image">
-        <div class="skills">
-            <h3>My Skills</h3>
-            <ul>
-                <li>HTML/CSS</li>
-                <li>JavaScript</li>
-                <li>GSAP</li>
-                <li>React</li>
-            </ul>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a web developer with a focus on front-end technologies. I love building responsive and animated websites that provide great user experiences.</p>
+                <p>With expertise in modern web technologies, I create websites that are not only visually appealing but also highly functional and performant.</p>
+            </div>
         </div>
     </section>
 
@@ -53,16 +48,25 @@
         <h2>My Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>Project 1</h3>
-                <p>A responsive website with animations.</p>
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Project 1</h3>
+                    <p>A responsive website with animations and modern design principles.</p>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Project 2</h3>
-                <p>An interactive web app using JavaScript.</p>
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Project 2</h3>
+                    <p>An interactive web app using JavaScript with a focus on user experience.</p>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Project 3</h3>
-                <p>Portfolio site with GSAP effects.</p>
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h3>Project 3</h3>
+                    <p>Portfolio site with GSAP animations and smooth scrolling effects.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -70,38 +74,66 @@
     <!-- Skills Section -->
     <section id="skills">
         <h2>Skills</h2>
-        <div class="skill">
-            <div class="skill-name">HTML/CSS</div>
-            <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
-        </div>
-        <div class="skill">
-            <div class="skill-name">JavaScript</div>
-            <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
-        </div>
-        <div class="skill">
-            <div class="skill-name">GSAP</div>
-            <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>HTML5</h3>
+                <div class="skill-percentage">90%</div>
+            </div>
+            <div class="skill-card">
+                <h3>CSS3</h3>
+                <div class="skill-percentage">90%</div>
+            </div>
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <div class="skill-percentage">85%</div>
+            </div>
+            <div class="skill-card">
+                <h3>React</h3>
+                <div class="skill-percentage">75%</div>
+            </div>
+            <div class="skill-card">
+                <h3>Bootstrap</h3>
+                <div class="skill-percentage">80%</div>
+            </div>
+            <div class="skill-card">
+                <h3>Git</h3>
+                <div class="skill-percentage">70%</div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+        <div class="contact-container">
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="social-links">
+                <p>Feel free to reach out to me through social media:</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <script src="main.js">
-       
-    </script>
+    <footer>
+        <p>&copy; 2025 Ajay. All rights reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
